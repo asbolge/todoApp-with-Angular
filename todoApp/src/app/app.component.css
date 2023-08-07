@@ -1,0 +1,61 @@
+.inputArea {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(47, 226, 70, 0.75);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+}
+
+.buttonArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 20px;
+}
+
+.categoryArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.inProgress {
+
+    background-color: yellow;
+}
+
+.ready {
+
+    background-color: green;
+}
+
+.upcoming {
+    
+    background-color: orange;
+}
+
+.category {
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+    align-content: center;
+    /* margin: 10px;
+    border-radius: 10px;
+    height: 600px;
+    width: 400px;
+    display: flex;
+    justify-content:center;
+    align-items: flex-start; */
+}

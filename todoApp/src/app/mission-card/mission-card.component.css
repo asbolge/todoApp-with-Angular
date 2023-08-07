@@ -1,0 +1,13 @@
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-title{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.card-subtitle{
+    font-size: larger;
+}
