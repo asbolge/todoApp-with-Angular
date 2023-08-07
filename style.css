@@ -1,0 +1,60 @@
+body {
+    background-color: rgb(105, 153, 194);
+}
+
+.card {
+    width: 18rem;
+    -webkit-box-shadow: 11px 13px 8px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 11px 13px 8px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 11px 13px 8px 1px rgba(0, 0, 0, 0.75);
+}
+
+.upcoming {
+    width: 31%;
+    justify-content: center;
+    text-align: center;
+    background: rgba(73, 223, 73, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.ready {
+    width: 31%;
+    justify-content: center;
+    text-align: center;
+    background: rgba(73, 223, 213, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.inprogress {
+    width: 31%;
+    justify-content: center;
+    text-align: center;
+    background: rgba(244, 227, 15, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.radio-wrapper {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.inputs {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
