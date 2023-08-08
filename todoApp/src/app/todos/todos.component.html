@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class=" inputArea">
+            <form (ngSubmit)="addTodo()" [formGroup]="myForm">
+                <mat-form-field class="m-3">
+                    <mat-label>Input</mat-label>
+                    <input formControlName="content" matInput name="inputTodo">
+                </mat-form-field>
+                <mat-form-field class="m-3">
+                    <mat-label>Select</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option value="upcoming">Upcoming</mat-option>
+                        <mat-option value="ready">Ready</mat-option>
+                        <mat-option value="inprogress">Inprogress</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button type="submit" mat-raised-button>add todo</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="row categoryArea">
+        <div class="col-md-3 my-5 {{status}} category" *ngFor="let status of statuses; let i = index">
+            <div>
+                <h1>{{status}}</h1>
+                <mat-card class="cardCss" *ngFor="let todo of todoLists[i]">
+                    <mat-card-header>
+                        <mat-card-title>{{todo.content}}</mat-card-title>
+                        <mat-card-subtitle>{{todo.status}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-actions align="end">
+                        <mat-form-field>
+                            <mat-select [(ngModel)]="todo.status" (change)="changeTodoStatus(todo.id)">
+                                <mat-option value="upcoming">upcoming</mat-option>
+                                <mat-option value="ready">ready</mat-option>
+                                <mat-option value="inprogress">inprogress</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button (click)="deleteTodo(todo.id)" mat-button>DELETE</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+
+        </div>
+    </div>
+</div>
