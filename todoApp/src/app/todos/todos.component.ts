@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../models/Todo';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
+import { Validators } from '@angular/forms';
 
 uuidv4();
 
@@ -25,8 +26,8 @@ export class TodosComponent implements OnInit {
   initForm() {
 
     this.myForm = this.fb.group({
-      content: '',
-      status: ''
+      content: ['', Validators.required],
+      status: ['', Validators.required]
     })
 
   }
@@ -54,8 +55,8 @@ export class TodosComponent implements OnInit {
     }
   ]
 
-
-  upcomingTodos= this.todos.filter(todo => todo.status === "upcoming");
+  // todos listesinden elemanların statuslerine göre listelere ayrılması
+  upcomingTodos = this.todos.filter(todo => todo.status === "upcoming");
 
   readyTodos: Todo[] = this.todos.filter(todo => todo.status === "ready");
 
@@ -74,8 +75,8 @@ export class TodosComponent implements OnInit {
     this.inprogressTodos = this.todos.filter(todo => todo.status === "inprogress");
 
     this.todoLists = [this.upcomingTodos,
-      this.readyTodos,
-      this.inprogressTodos];
+    this.readyTodos,
+    this.inprogressTodos];
 
   }
 
@@ -97,8 +98,18 @@ export class TodosComponent implements OnInit {
     })
 
     this.upgradeTodoLists();
-    this.initForm();
+
     console.log(this.todos);
+
+    this.myForm.controls['content'].setErrors(null);
+    this.myForm.controls['status'].setErrors(null);
+
+    this.myForm.reset({
+      content: '',
+      status: ''
+    });
+
+    
   }
 
   deleteTodo(id: string) {
@@ -109,8 +120,8 @@ export class TodosComponent implements OnInit {
     this.upgradeTodoLists();
   }
 
-  changeTodoStatus(id:string){
-
+  changeTodoStatus() {
+    this.upgradeTodoLists();
   }
 
 }

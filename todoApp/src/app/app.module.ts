@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MissionCardComponent } from './mission-card/mission-card.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -23,7 +22,6 @@ import { TodosComponent } from './todos/todos.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MissionCardComponent,
     TodosComponent
   ],
   imports: [

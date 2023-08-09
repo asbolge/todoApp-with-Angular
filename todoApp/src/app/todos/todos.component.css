@@ -1,10 +1,10 @@
 .inputArea {
-    margin-top: 30px;
+    margin-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    background: rgba(29, 119, 218, 0.75);
+    background: #c1c1c1;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
@@ -14,26 +14,27 @@
 
 
 
+
 .categoryArea {
     display: flex;
     justify-content: center;
-    align-items:first baseline;
+    align-items: first baseline;
 
 }
 
 .inprogress {
 
-    background-color: yellow;
+    background-color: #d59bf6;
 }
 
 .ready {
 
-    background-color: green;
+    background-color: #cbf078;
 }
 
 .upcoming {
 
-    background-color: orange;
+    background-color: #79c2d0;
 }
 
 .category {
@@ -45,10 +46,20 @@
     flex-wrap: wrap;
     flex-direction: column;
     width: 400px;
-    min-height: 400px;
+    min-height: 600px;
     align-content: center;
 }
 
-.cardCss{
+.cardCss {
+    background-color: #eaf6f6;
     margin: 10px;
+}
+
+.borderBottom {
+    border-bottom: 1px solid black;
+}
+
+input .ng-invalid {
+    border-color: initial;
+    /* Varsayılan çerçeve rengi veya istediğiniz renk */
 }

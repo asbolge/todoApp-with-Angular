@@ -4,7 +4,7 @@
             <form (ngSubmit)="addTodo()" [formGroup]="myForm">
                 <mat-form-field class="m-3">
                     <mat-label>Input</mat-label>
-                    <input formControlName="content" matInput name="inputTodo">
+                    <input class="borderColor" formControlName="content" matInput name="inputTodo">
                 </mat-form-field>
                 <mat-form-field class="m-3">
                     <mat-label>Select</mat-label>
@@ -14,7 +14,7 @@
                         <mat-option value="inprogress">Inprogress</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <button type="submit" mat-raised-button>add todo</button>
+                <button type="submit" [disabled]="!myForm.valid" mat-raised-button>add todo</button>
             </form>
         </div>
 
@@ -24,19 +24,21 @@
             <div>
                 <h1>{{status}}</h1>
                 <mat-card class="cardCss" *ngFor="let todo of todoLists[i]">
-                    <mat-card-header>
-                        <mat-card-title>{{todo.content}}</mat-card-title>
-                        <mat-card-subtitle>{{todo.status}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-actions align="end">
-                        <mat-form-field>
-                            <mat-select [(ngModel)]="todo.status" (change)="changeTodoStatus(todo.id)">
+                    <div class="borderBottom">
+                        <mat-card-header align="start">
+                            <mat-card-title>{{todo.content}}</mat-card-title>
+                            <mat-card-subtitle>{{todo.status}}</mat-card-subtitle>
+                        </mat-card-header>
+                    </div>
+                    <mat-card-actions align="end" class="row">
+                        <mat-form-field class="col-md-5">
+                            <mat-select [(ngModel)]="todo.status" (ngModelChange)="changeTodoStatus()">
                                 <mat-option value="upcoming">upcoming</mat-option>
                                 <mat-option value="ready">ready</mat-option>
                                 <mat-option value="inprogress">inprogress</mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <button (click)="deleteTodo(todo.id)" mat-button>DELETE</button>
+                        <button class="col-md-3" (click)="deleteTodo(todo.id)" mat-button>DELETE</button>
                     </mat-card-actions>
                 </mat-card>
             </div>
