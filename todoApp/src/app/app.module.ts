@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
+import { ApiService } from './services/api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,19 +15,32 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
 import { TodosComponent } from './todos/todos.component';
+import { PopupComponent } from './popup/popup.component';
+import { InprogressComponent } from './inprogress/inprogress.component';
+import { DoneComponent } from './done/done.component';
+import { CancelledComponent } from './cancelled/cancelled.component';
+import { TodoCardComponent } from './todo-card/todo-card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodosComponent
+    TodosComponent,
+    PopupComponent,
+    InprogressComponent,
+    DoneComponent,
+    CancelledComponent,
+    TodoCardComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule,
@@ -36,9 +51,11 @@ import { TodosComponent } from './todos/todos.component';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatTabsModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

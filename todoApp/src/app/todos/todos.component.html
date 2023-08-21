@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class=" inputArea">
-            <form (ngSubmit)="addTodo()" [formGroup]="myForm">
+            <form (ngSubmit)="addTodoButton()" [formGroup]="myForm">
                 <mat-form-field class="m-3">
                     <mat-label>Input</mat-label>
                     <input class="borderColor" formControlName="content" matInput name="inputTodo">
@@ -9,40 +9,110 @@
                 <mat-form-field class="m-3">
                     <mat-label>Select</mat-label>
                     <mat-select formControlName="status">
-                        <mat-option value="upcoming">Upcoming</mat-option>
-                        <mat-option value="ready">Ready</mat-option>
-                        <mat-option value="inprogress">Inprogress</mat-option>
+                        <mat-option value="inprogress">inprogress</mat-option>
+                        <mat-option value="done">done</mat-option>
+                        <mat-option value="cancelled">cancelled</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <button type="submit" [disabled]="!myForm.valid" mat-raised-button>add todo</button>
+                <button type="submit" [disabled]="''===myForm.value.content || ''=== myForm.value.status" mat-raised-button>add todo</button>
             </form>
         </div>
-
     </div>
-    <div class="row categoryArea">
-        <div class="col-md-3 my-5 {{status}} category" *ngFor="let status of statuses; let i = index">
-            <div>
-                <h1>{{status}}</h1>
-                <mat-card class="cardCss" *ngFor="let todo of todoLists[i]">
-                    <div class="borderBottom">
-                        <mat-card-header align="start">
-                            <mat-card-title>{{todo.content}}</mat-card-title>
-                            <mat-card-subtitle>{{todo.status}}</mat-card-subtitle>
-                        </mat-card-header>
+    <div class="row tabArea ">
+        <mat-tab-group class="tabGroup">
+            <mat-tab label="In-Progress">
+                <div class="container">
+                    <div class="row deneme"><ng-container *ngFor="let todo of inprogressTodosJson">
+                            <div class="col-md-4">
+                                <mat-card class="cardCss w-100">
+                                    <div class="borderBottom">
+                                        <mat-card-header align="start">
+                                            <mat-card-title>{{todo.content}}</mat-card-title>
+                                            <mat-card-subtitle>{{todo.status}}</mat-card-subtitle>
+                                        </mat-card-header>
+                                    </div>
+                                    <mat-card-actions align="end" class="row">
+                                        <button class="col-md-3" (click)="deleteButton(todo.id,todo.status)" mat-button>DELETE</button>
+                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)" mat-button>UPDATE</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                
+                
+                                <!-- <app-todo-card class="m-3" [todoContent]="todo.content" [todoId]="todo.id"
+                                    [todoStatus]="todo.status"></app-todo-card> -->
+                            </div>
+                        </ng-container>
+                
                     </div>
-                    <mat-card-actions align="end" class="row">
-                        <mat-form-field class="col-md-5">
-                            <mat-select [(ngModel)]="todo.status" (ngModelChange)="changeTodoStatus()">
-                                <mat-option value="upcoming">upcoming</mat-option>
-                                <mat-option value="ready">ready</mat-option>
-                                <mat-option value="inprogress">inprogress</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <button class="col-md-3" (click)="deleteTodo(todo.id)" mat-button>DELETE</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
+                </div>
+                <!-- <app-inprogress [inprogressTodosJson]="inprogressTodosJson"></app-inprogress> -->
+            </mat-tab>
+            <mat-tab label="Done">
+                <div class="container">
+                    <div class="row deneme"><ng-container *ngFor="let todo of doneTodosJson">
+                            <div class="col-md-4">
+                                <mat-card class="cardCss w-100">
+                                    <div class="borderBottom">
+                                        <mat-card-header align="start">
+                                            <mat-card-title>{{todo.content}}</mat-card-title>
+                                            <mat-card-subtitle>{{todo.status}}</mat-card-subtitle>
+                                        </mat-card-header>
+                                    </div>
+                                    <mat-card-actions align="end" class="row">
+                                        <button class="col-md-3" (click)="deleteButton(todo.id,todo.status)" mat-button>DELETE</button>
+                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)" mat-button>UPDATE</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </div>
+                        </ng-container>
+                
+                    </div>
+                </div>
+                
+                <!-- <app-done [doneTodosJson]="doneTodosJson"></app-done> -->
+            </mat-tab>
+            <mat-tab label="Cancelled">
+                <div class="container">
+                    <div class="row deneme"><ng-container *ngFor="let todo of cancelledTodosJson">
+                            <div class="col-md-4">
+                                <mat-card class="cardCss w-100">
+                                    <div class="borderBottom">
+                                        <mat-card-header align="start">
+                                            <mat-card-title>{{todo.content}}</mat-card-title>
+                                            <mat-card-subtitle>{{todo.status}}</mat-card-subtitle>
+                                        </mat-card-header>
+                                    </div>
+                                    <mat-card-actions align="end" class="row">
+                                        <button class="col-md-3" (click)="deleteButton(todo.id,todo.status)" mat-button>DELETE</button>
+                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)" mat-button>UPDATE</button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </div>
+                        </ng-container>
+                
+                    </div>
+                </div>
 
-        </div>
+                <!-- <app-cancelled [cancelledTodosJson]="cancelledTodosJson"></app-cancelled> -->
+            </mat-tab>
+        </mat-tab-group>
     </div>
 </div>
+
+
+
+
+
+
+
+<!-- <label><b>TODOS</b></label>
+<div>{{todos | json}}</div>
+<br><br>
+<label for=""><b>INPROGRESS</b></label>
+<div>{{inprogressTodosJson | json}}</div>
+<br><br>
+<label><b>DONE TODOS</b></label>
+<div>{{doneTodosJson | json}}</div>
+<br><br>
+<label><b>CANCELLEDTODOS</b></label>
+<div>{{cancelledTodosJson | json}}</div> -->

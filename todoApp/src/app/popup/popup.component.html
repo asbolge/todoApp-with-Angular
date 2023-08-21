@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Update Todo</h1>
+<form (ngSubmit)="updateTodoButton()" [formGroup]="updateForm">
+    <div mat-dialog-content>
+        <p></p>
+        <mat-form-field>
+            <mat-label>Content:</mat-label>
+            <input formControlName="updateContent" matInput name="inputTodo">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Status:</mat-label>
+            <mat-select formControlName="updateStatus">
+                <mat-option value="inprogress">inprogress</mat-option>
+                <mat-option value="done">done</mat-option>
+                <mat-option value="cancelled">cancelled</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="closeClick()">No Thanks</button>
+        <button mat-button type="submit" [disabled]="updateForm.invalid" cdkFocusInitial>Update</button>
+    </div>
+</form>

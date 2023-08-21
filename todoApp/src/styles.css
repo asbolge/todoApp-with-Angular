@@ -1,5 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: #385170;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.mat-tab-header {
+    width: 100%;
+}
+
+.mat-tab-body-wrapper {
+    width: 100%;
+}
+
+/* .mat-tab-label-container{
+    width: 100%;
+} */
+
+/* .mat-tab-list{
+    width: 100%;
+} */
+
+.mat-ripple {
+    width: 100%;
+}
+
+/* .mat-tab-label{
+    min-width: 33%!important;
+} */
