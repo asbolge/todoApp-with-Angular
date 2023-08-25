@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DeleteDialogComponent } from './delete-dialog.component';
 
-import { TodoCardComponent } from './todo-card.component';
-
-describe('TodoCardComponent', () => {
-  let component: TodoCardComponent;
-  let fixture: ComponentFixture<TodoCardComponent>;
+describe('DeleteDialogComponent', () => {
+  let component: DeleteDialogComponent;
+  let fixture: ComponentFixture<DeleteDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TodoCardComponent ]
+      declarations: [ DeleteDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TodoCardComponent);
+    fixture = TestBed.createComponent(DeleteDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

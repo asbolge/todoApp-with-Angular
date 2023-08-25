@@ -1,15 +1,12 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '../models/Todo';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
-import { Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
-import { filter } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../popup/popup.component';
-import { of } from 'rxjs';
-import { Observable } from 'rxjs';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+
 
 
 uuidv4();
@@ -22,7 +19,6 @@ uuidv4();
 export class TodosComponent implements OnInit {
 
   constructor(
-    private cdr: ChangeDetectorRef,
     private fb: FormBuilder, private _apiService: ApiService, private dialog: MatDialog) {
     this.initForm();
   }
@@ -30,8 +26,6 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
 
     this.getALL();
-
-
   }
 
   myForm!: FormGroup;
@@ -94,7 +88,6 @@ export class TodosComponent implements OnInit {
     this._apiService.postTodos(todo).subscribe(
       (response) => {
         console.log('Todo başarıyla eklendi:', response);
-        this.cdr.detectChanges();
 
       },
       (error) => {
@@ -115,19 +108,21 @@ export class TodosComponent implements OnInit {
 
   deleteButton(id: string, status: string) {
 
-    
-    if(confirm("Confirm Delete")==true){   this._apiService.deleteTodos(id).subscribe(
-      () => {
-        console.log('Ürün başarıyla silindi.');
-      },
-      (error) => {
-        console.error('Ürün silinirken bir hata oluştu:', error);
-      }
-    );}
+
+    if (confirm("Confirm Delete") == true) {
+      this._apiService.deleteTodos(id).subscribe(
+        () => {
+          console.log('Ürün başarıyla silindi.');
+        },
+        (error) => {
+          console.error('Ürün silinirken bir hata oluştu:', error);
+        }
+      );
+    }
 
     this.getALL();
 
-    
+
   };
 
   selectedTodo: string = "";
@@ -136,8 +131,10 @@ export class TodosComponent implements OnInit {
     this.openPopup = !this.openPopup;
     this.selectedTodo = todoId;
     const dialogRef = this.dialog.open(PopupComponent, {
-      data: { id: todoId, openPopup: this.openPopup,
-        getALL: this.getALL.bind(this) }
+      data: {
+        id: todoId, openPopup: this.openPopup,
+        getALL: this.getALL.bind(this)
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -145,5 +142,22 @@ export class TodosComponent implements OnInit {
       // Gerekirse, dialog kapandığında yapılacak işlemler
     });
   }
+
+
+  deleteDialog = false;
+  openDeleteDialog(todoId: string, todoContent: string): void {
+    this.deleteDialog = !this.deleteDialog;
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: {
+        id: todoId, content: todoContent, deleteDialog: this.deleteDialog,
+        getALL: this.getALL.bind(this)
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog kapandı:', result);
+      // Gerekirse, dialog kapandığında yapılacak işlemler
+    });
+  };
 }
 

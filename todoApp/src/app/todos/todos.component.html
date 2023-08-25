@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class=" inputArea">
-            <form (ngSubmit)="addTodoButton()" [formGroup]="myForm">
+            <form autocomplete="off" (ngSubmit)="addTodoButton()" [formGroup]="myForm">
                 <mat-form-field class="m-3">
                     <mat-label>Input</mat-label>
                     <input class="borderColor" formControlName="content" matInput name="inputTodo">
@@ -14,7 +14,8 @@
                         <mat-option value="cancelled">cancelled</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <button type="submit" [disabled]="''===myForm.value.content || ''=== myForm.value.status" mat-raised-button>add todo</button>
+                <button type="submit" [disabled]="''===myForm.value.content || ''=== myForm.value.status"
+                    mat-raised-button>add todo</button>
             </form>
         </div>
     </div>
@@ -23,7 +24,7 @@
             <mat-tab label="In-Progress">
                 <div class="container">
                     <div class="row deneme"><ng-container *ngFor="let todo of inprogressTodosJson">
-                            <div class="col-md-4">
+                            <div class="col-md-4 pt-2">
                                 <mat-card class="cardCss w-100">
                                     <div class="borderBottom">
                                         <mat-card-header align="start">
@@ -32,25 +33,22 @@
                                         </mat-card-header>
                                     </div>
                                     <mat-card-actions align="end" class="row">
-                                        <button class="col-md-3" (click)="deleteButton(todo.id,todo.status)" mat-button>DELETE</button>
-                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)" mat-button>UPDATE</button>
+                                        <button class="col-md-3" (click)="openDeleteDialog(todo.id,todo.content)"
+                                            mat-button>DELETE</button>
+                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)"
+                                            mat-button>UPDATE</button>
                                     </mat-card-actions>
                                 </mat-card>
-                
-                
-                                <!-- <app-todo-card class="m-3" [todoContent]="todo.content" [todoId]="todo.id"
-                                    [todoStatus]="todo.status"></app-todo-card> -->
                             </div>
                         </ng-container>
-                
+
                     </div>
                 </div>
-                <!-- <app-inprogress [inprogressTodosJson]="inprogressTodosJson"></app-inprogress> -->
             </mat-tab>
             <mat-tab label="Done">
                 <div class="container">
                     <div class="row deneme"><ng-container *ngFor="let todo of doneTodosJson">
-                            <div class="col-md-4">
+                            <div class="col-md-4 pt-2">
                                 <mat-card class="cardCss w-100">
                                     <div class="borderBottom">
                                         <mat-card-header align="start">
@@ -59,22 +57,22 @@
                                         </mat-card-header>
                                     </div>
                                     <mat-card-actions align="end" class="row">
-                                        <button class="col-md-3" (click)="deleteButton(todo.id,todo.status)" mat-button>DELETE</button>
-                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)" mat-button>UPDATE</button>
+                                        <button class="col-md-3" (click)="openDeleteDialog(todo.id,todo.content)"
+                                            mat-button>DELETE</button>
+                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)"
+                                            mat-button>UPDATE</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </div>
                         </ng-container>
-                
+
                     </div>
                 </div>
-                
-                <!-- <app-done [doneTodosJson]="doneTodosJson"></app-done> -->
             </mat-tab>
             <mat-tab label="Cancelled">
                 <div class="container">
                     <div class="row deneme"><ng-container *ngFor="let todo of cancelledTodosJson">
-                            <div class="col-md-4">
+                            <div class="col-md-4  pt-2">
                                 <mat-card class="cardCss w-100">
                                     <div class="borderBottom">
                                         <mat-card-header align="start">
@@ -83,17 +81,17 @@
                                         </mat-card-header>
                                     </div>
                                     <mat-card-actions align="end" class="row">
-                                        <button class="col-md-3" (click)="deleteButton(todo.id,todo.status)" mat-button>DELETE</button>
-                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)" mat-button>UPDATE</button>
+                                        <button class="col-md-3" (click)="openDeleteDialog(todo.id,todo.content)"
+                                            mat-button>DELETE</button>
+                                        <button class="col-md-3" (click)="openUpdateDialog(todo.id)"
+                                            mat-button>UPDATE</button>
                                     </mat-card-actions>
                                 </mat-card>
                             </div>
                         </ng-container>
-                
+
                     </div>
                 </div>
-
-                <!-- <app-cancelled [cancelledTodosJson]="cancelledTodosJson"></app-cancelled> -->
             </mat-tab>
         </mat-tab-group>
     </div>

@@ -1,33 +1,8 @@
 {
   "todos": [
     {
-      "id": "8ea49697-7770-481a-be11-43d0b86c1035",
-      "content": "",
-      "status": ""
-    },
-    {
-      "id": "8ea49697-7770-481a-be11-43d0b86c1035",
-      "content": "",
-      "status": ""
-    },
-    {
-      "id": "67990c2b-e331-4d7b-9710-b4ccf660b7e7",
-      "content": "111111111",
-      "status": "inprogress"
-    },
-    {
-      "id": "34b76948-20c0-4699-bde9-982565746688",
-      "content": "123213211213121",
-      "status": "done"
-    },
-    {
-      "id": "348ab30c-d9b3-4c8e-b6c8-a55c80410685",
-      "content": "3221321312",
-      "status": "done"
-    },
-    {
-      "id": "4e942f1d-3ff5-4e6e-9aaa-5714d663b247",
-      "content": "2222222",
+      "id": "ab109ec4-91af-4003-9d86-12dec84f6b5a",
+      "content": "Learn Angular",
       "status": "inprogress"
     }
   ]

@@ -1,12 +1,7 @@
-import { Component, OnInit , Inject, ElementRef } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Todo } from '../models/Todo';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { v4 as uuidv4 } from 'uuid';
-import { Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
-import { filter } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
-import { Input } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -23,9 +18,9 @@ export class PopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private _apiService: ApiService,
-    private el:ElementRef,
+    // private el:ElementRef,
     private dialogRef: MatDialogRef<PopupComponent>
-     ) {
+  ) {
     this.initFormUpdate();
   }
 
@@ -33,25 +28,25 @@ export class PopupComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  
-  
+
+
   updateForm!: FormGroup;
 
   initFormUpdate() {
 
     this.updateForm = this.fb.group({
-      updateContent: ['', Validators.required],
-      updateStatus: ['', Validators.required]
+      updateContent: [''],
+      updateStatus: ['']
     })
 
   }
 
-  
-  closeClick(){
+
+  closeClick() {
     this.dialogRef.close();
   }
-  
-  
+
+
 
   updateTodoButton() {
 
@@ -84,8 +79,8 @@ export class PopupComponent implements OnInit {
 
     console.log('myForm: ', this.updateForm);
 
-    
 
-  }  
+
+  }
 
 }

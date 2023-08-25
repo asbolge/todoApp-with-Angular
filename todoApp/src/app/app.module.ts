@@ -17,15 +17,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
-
-
-
 import { TodosComponent } from './todos/todos.component';
 import { PopupComponent } from './popup/popup.component';
-import { InprogressComponent } from './inprogress/inprogress.component';
-import { DoneComponent } from './done/done.component';
-import { CancelledComponent } from './cancelled/cancelled.component';
-import { TodoCardComponent } from './todo-card/todo-card.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 
 @NgModule({
@@ -33,10 +27,7 @@ import { TodoCardComponent } from './todo-card/todo-card.component';
     AppComponent,
     TodosComponent,
     PopupComponent,
-    InprogressComponent,
-    DoneComponent,
-    CancelledComponent,
-    TodoCardComponent
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
